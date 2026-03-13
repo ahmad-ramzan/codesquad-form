@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:4000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 const STEPS = [
   { id: "intro", label: "Welcome" },
@@ -365,8 +365,14 @@ export default function AIReadinessAssessment() {
 
       const selectedPortfolios = getPortfoliosForIndustry(answers.industry);
 
+      const base = API_BASE_URL.trim();
+      const endpoint =
+        base && base.length > 0
+          ? `${base.replace(/\/$/, "")}/send-results`
+          : "/api/send-results";
+
       try {
-        const response = await fetch(`${API_BASE_URL}/send-results`, {
+        const response = await fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -385,7 +391,7 @@ export default function AIReadinessAssessment() {
         }
       } catch (error) {
         console.error("Failed to send results email:", error);
-        alert("Email sending failed. Please ensure backend is running (npm run dev:full) and try again.");
+        alert("Email sending failed. Please try again in a moment or contact support.");
         return;
       }
     }
