@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
+<<<<<<< HEAD
+=======
+.env
+
+>>>>>>> 009c11f (local to deploy)
