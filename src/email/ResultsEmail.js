@@ -106,7 +106,7 @@ export function renderResultsEmail({
 
                 <p style="color:#777;font-size:14px;margin-top:30px;">
                   Best regards,<br/>
-                  <strong>Shahzaib Hamid </strong><br/>
+                  <strong>Shahzaib Hamid</strong><br/>
                   AI &amp; Automation Consulting
                 </p>
               </td>
